@@ -68,7 +68,7 @@ void displayBOARD()
 		cout << '\n';
 	}
 }
-void displayBOARD(string b)
+void displayBOARD(string b) //debugger
 {
 	for (int i = 0; i < 14; ++i) cout << "_";
 	cout << '\n';
@@ -90,7 +90,7 @@ bool isTie()
 	for (int i = 0; i < 9; ++i) if (b[i] == ' ') return false;
 	return true;
 }
-string getChoice()
+string getPlay()
 {
 	if (isTie()) return b; 
 	int idx = mp[b];
@@ -125,7 +125,7 @@ string getChoice()
 }
 void robotTurn()
 {
-	b = getChoice();
+	b = getPlay();
 }
 
 bool isWin()
