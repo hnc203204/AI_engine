@@ -26,6 +26,22 @@ int cnt;
 vector< vector< pair<int, int> > > adj;
 vector<int> Win;
 string b;
+/*
+	Interface:
+		+ void displayBOARD(): Xuất ra màn hình ma trận vừa được cập nhật
+		+ void playTurn(char c): Nhập vào toạ độ của người chơi, c là kí tự X hoặc O.
+		+ void robotTurn(): Nước đi của người máy.
+		+ void gameStart(): Bắt đầu trò chơi (Người chơi chọn kí tự X và O và bắt đầu nước đi đầu tiên), xuất ra số điểm của mỗi người khi kết thúc trò chơi.
+	Engine:
+		+ bool isWin(): Kiểm tra xem đã tồn tại các cột hay hàng hay đường chéo gồm các kí tự giống nhau chưa?.
+		+ bool isTie(): Kiểm tra xem nếu thực hiện hết 9 nước đi nhưng không phân thắng thua => hoà, kết thúc trò chơi.
+		+ void bruteFore(int turn): Ta sẽ duyệt tất cả những những trạng thái bắt đầu từ trạng thái ban đầu.
+		-> Khi đó ta sẽ tạo được đồ thị có hướng, không chu trình.
+		+ void Solve(int u): Xử lý mỗi trạng thái u nếu trạng thái u là O thì sẽ chọn được đi mà X có số điểm là bé nhất, ngước lại X sẽ chọn nước đi mà nó sẽ có số điểm tối ưu nhất.
+		-> Sau khi đã duyệt được mọi trạng thái và đưa ra được số điểm tối ưu cho từng trạng thái.
+		+ string getPlay(): trả về ma trận nước đi tối ưu nhất đã được xử lý cho người thực hiện trạng thái đó.
+*/
+
 
 void init() {
 	b = string(9, ' ');
@@ -125,6 +141,7 @@ string getPlay()
 }
 void robotTurn()
 {
+	cout << "Robot turn: \n";
 	b = getPlay();
 }
 
@@ -172,7 +189,7 @@ void bruteForce(int turn)
 	}
 }
 
-bool isVisited[400000];;
+bool isVisited[400000];
 
 void Solve(int u)
 {
