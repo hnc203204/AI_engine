@@ -43,7 +43,7 @@ void playerTurn(char c)
 	cout << "Input coordinate: ";
 	int x, y;
 	cin >> x >> y;
-	while (b[(x - 1) * 3 + (y - 1)] != ' ')
+	while (x < 0 || x > 3 || y < 0 || y > 3 || b[(x - 1) * 3 + (y - 1)] != ' ')
 	{
 		cout << "INVALID, choose again: ";
 		cin >> x >> y;
